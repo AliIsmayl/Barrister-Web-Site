@@ -1,14 +1,13 @@
-import React from 'react'
-import './homePage.scss'
+import React from 'react';
 import { Helmet } from "react-helmet";
+import ContactSection from '../../components/ContactSection';
 import Header from '../../components/Header';
 import RegisterSection from '../../components/RegisterSection';
 import StudentsSection from '../../components/StudentsSection';
 import UpcomingSection from '../../components/UpcomingSection/iindex';
-import OurServicesSection from '../../components/OurServicesSection';
-import Navbar from '../../layout/Navbar';
 import Footer from '../../layout/Footer';
-import ContactSection from '../../components/ContactSection';
+import Navbar from '../../layout/Navbar';
+import './homePage.scss';
 
 function HomePage() {
   return (
