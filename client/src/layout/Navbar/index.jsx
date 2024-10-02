@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import './navbar.scss';
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import "./navbar.scss";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 import { FaPinterest } from "react-icons/fa";
@@ -9,10 +8,11 @@ import { IoLogoInstagram } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
-import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink } from "react-scroll";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
+import Logo from "../../image/Logo.png";
 
 function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -42,7 +42,7 @@ function Navbar() {
     <nav>
       <div className="navbarLeftBox">
         <div className="iconBox">
-          <img src="https://png.pngtree.com/png-vector/20220816/ourmid/pngtree-law-firm-logo-and-icon-design-template-vector-silhouette-judge-abstract-vector-png-image_38449268.png" alt="" />
+          <img src={Logo} alt="Logo" />
         </div>
         <div className="textBox">
           <ul>
@@ -75,7 +75,7 @@ function Navbar() {
                   onClick={() => {
                     setWhichLang(lang);
                     setOpenLangBox(false);
-                    changeLang(`${lang.toLowerCase()}`);
+                    changeLang(lang.toLowerCase());
                   }}
                 >
                   {lang}
@@ -89,10 +89,10 @@ function Navbar() {
         </div>
       </div>
       <div className="navbarRightBox">
-        <FaPhoneVolume style={{ fontSize: '40px' }} />
+        <FaPhoneVolume style={{ fontSize: "40px" }} />
         <h1>+994 50 593 18 38</h1>
       </div>
-      <div className={`respNavbar ${openNavbar ? 'openNavbar' : ""}`}>
+      <div className={`respNavbar ${openNavbar ? "openNavbar" : ""}`}>
         <ul>
           <ScrollLink to="Home" smooth={true} duration={500} offset={-50}>
             <li onClick={handleOpennavbar}>{t("Home")}</li>
@@ -110,9 +110,7 @@ function Navbar() {
             <li onClick={handleOpennavbar}>{t("Contact")}</li>
           </ScrollLink>
         </ul>
-
-
-        <div className='iconsBox'>
+        <div className="iconsBox">
           <div className="closeBtn" onClick={handleOpennavbar}>
             <IoMdClose />
           </div>
@@ -145,7 +143,7 @@ function Navbar() {
                 onClick={() => {
                   setWhichLang(lang);
                   setOpenLangBox(false);
-                  changeLang(`${lang.toLowerCase()}`);
+                  changeLang(lang.toLowerCase());
                 }}
               >
                 {lang}
@@ -154,11 +152,8 @@ function Navbar() {
           </div>
         </div>
       </div>
-
-
-
     </nav>
-  )
+  );
 }
 
 export default Navbar;
