@@ -56,6 +56,28 @@ nav {
         max-width: 200px;
     }
 
+    .selectBox {
+        // margin-left: 20px;
+        font-family: "Poppins-Regular";
+        position: relative;
+        cursor: pointer;
+
+        .mainLang {
+            @include Myflex();
+
+        }
+
+        .allLangsBox {
+            position: absolute;
+            display: none;
+            width: 100%;
+        }
+
+        .opened {
+            display: block;
+        }
+    }
+
     .navbarLeftBox {
         display: flex;
         background-color: white;
@@ -67,6 +89,7 @@ nav {
         height: 130px;
         width: 55%;
 
+
         .iconBox {
             @include Myflex();
             gap: 17px
@@ -74,6 +97,7 @@ nav {
 
         .textBox {
             @include Myflex();
+            gap: 20px;
 
             ul {
                 font-size: 20px;

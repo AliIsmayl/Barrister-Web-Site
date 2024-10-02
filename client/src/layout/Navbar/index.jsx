@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import './navbar.scss'
+import React, { useState } from 'react';
+import './navbar.scss';
 import { Link } from "react-router-dom";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
@@ -10,33 +10,33 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { Link as ScrollLink } from 'react-scroll';
+import { IoIosArrowDown } from "react-icons/io";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 function Navbar() {
-  const [openNavbar, setOpenNavbar] = useState(false)
+  const [openNavbar, setOpenNavbar] = useState(false);
+  const [openLangBox, setOpenLangBox] = useState(false);
+  const defaultLang = localStorage.getItem("language")
+    ? JSON.parse(localStorage.getItem("language"))
+    : "EN";
+  const [whichLang, setWhichLang] = useState(defaultLang);
+  const languages = ["AZ", "EN"];
+  const filteredLanguages = languages.filter((lang) => lang !== whichLang);
+  const { t } = useTranslation();
 
   function handleOpennavbar() {
-    setOpenNavbar(!openNavbar)
+    setOpenNavbar(!openNavbar);
   }
-  // const getElementPosition = (id) => {
-  //   const element = document.getElementById(id);
-  //   if (element) {
-  //     return element.offsetTop;
-  //   }
-  //   return 0;
-  // };
 
-  // const scrollToSection = (id) => {
-  //   const section = document.getElementById(id);
-  //   if (section) {
-  //     section.scrollIntoView({
-  //       behavior: 'smooth',
-  //       block: 'start'
-  //     });
-  //   }
-  // };
+  function changeLang(lang) {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("language", JSON.stringify(lang.toUpperCase()));
+  }
 
-
-
+  function handleOpenLangBox() {
+    setOpenLangBox(!openLangBox);
+  }
 
   return (
     <nav>
@@ -47,33 +47,42 @@ function Navbar() {
         <div className="textBox">
           <ul>
             <ScrollLink to="Home" smooth={true} duration={500} offset={-50}>
-              <li>
-                Home
-              </li>
+              <li>{t("Home")}</li>
             </ScrollLink>
             <ScrollLink to="About" smooth={true} duration={500} offset={-50}>
-              <li>
-                About
-              </li>
+              <li>{t("About")}</li>
             </ScrollLink>
             <ScrollLink to="Service" smooth={true} duration={500} offset={-50}>
-              <li>
-                Service
-              </li>
+              <li>{t("Service")}</li>
             </ScrollLink>
             <ScrollLink to="News" smooth={true} duration={500} offset={-50}>
-              <li>
-                News
-              </li>
+              <li>{t("News")}</li>
             </ScrollLink>
             <ScrollLink to="Contact" smooth={true} duration={500} offset={-50}>
-              <li>
-                Contact
-              </li>
+              <li>{t("Contact")}</li>
             </ScrollLink>
           </ul>
-
-
+          <div className="selectBox">
+            <div className="mainLang" onClick={handleOpenLangBox}>
+              <p style={{ fontSize: "20px" }}>{whichLang}</p>
+              <IoIosArrowDown />
+            </div>
+            <div className={`allLangsBox ${openLangBox ? "opened" : ""}`}>
+              {filteredLanguages.map((lang) => (
+                <div
+                  key={lang}
+                  className="langBox"
+                  onClick={() => {
+                    setWhichLang(lang);
+                    setOpenLangBox(false);
+                    changeLang(`${lang.toLowerCase()}`);
+                  }}
+                >
+                  {lang}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="menuBox" onClick={handleOpennavbar}>
           <IoMenu />
@@ -86,31 +95,23 @@ function Navbar() {
       <div className={`respNavbar ${openNavbar ? 'openNavbar' : ""}`}>
         <ul>
           <ScrollLink to="Home" smooth={true} duration={500} offset={-50}>
-            <li onClick={handleOpennavbar}>
-              Home
-            </li>
+            <li onClick={handleOpennavbar}>{t("Home")}</li>
           </ScrollLink>
           <ScrollLink to="About" smooth={true} duration={500} offset={-50}>
-            <li onClick={handleOpennavbar}>
-              About
-            </li>
+            <li onClick={handleOpennavbar}>{t("About")}</li>
           </ScrollLink>
           <ScrollLink to="Service" smooth={true} duration={500} offset={-50}>
-            <li onClick={handleOpennavbar}>
-              Service
-            </li>
+            <li onClick={handleOpennavbar}>{t("Service")}</li>
           </ScrollLink>
           <ScrollLink to="News" smooth={true} duration={500} offset={-50}>
-            <li onClick={handleOpennavbar}>
-              News
-            </li>
+            <li onClick={handleOpennavbar}>{t("News")}</li>
           </ScrollLink>
           <ScrollLink to="Contact" smooth={true} duration={500} offset={-50}>
-            <li onClick={handleOpennavbar}>
-              Contact
-            </li>
+            <li onClick={handleOpennavbar}>{t("Contact")}</li>
           </ScrollLink>
         </ul>
+
+
         <div className='iconsBox'>
           <div className="closeBtn" onClick={handleOpennavbar}>
             <IoMdClose />
@@ -131,9 +132,33 @@ function Navbar() {
             <FaTwitter />
           </p>
         </div>
+        <div className="selectBox">
+          <div className="mainLang" onClick={handleOpenLangBox}>
+            <p style={{ fontSize: "20px" }}>{whichLang}</p>
+            <IoIosArrowDown />
+          </div>
+          <div className={`allLangsBox ${openLangBox ? "opened" : ""}`}>
+            {filteredLanguages.map((lang) => (
+              <div
+                key={lang}
+                className="langBox"
+                onClick={() => {
+                  setWhichLang(lang);
+                  setOpenLangBox(false);
+                  changeLang(`${lang.toLowerCase()}`);
+                }}
+              >
+                {lang}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+
+
     </nav>
   )
 }
 
-export default Navbar
+export default Navbar;
