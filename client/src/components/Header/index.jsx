@@ -4,110 +4,49 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import { IoEarth } from "react-icons/io5";
-import { GiPyromaniac } from "react-icons/gi";
-import { GiBookshelf } from "react-icons/gi";
+import { RiBankLine } from "react-icons/ri";
+import { FaOilWell } from "react-icons/fa6";
+import { IoPeopleSharp } from "react-icons/io5";
+import { useTranslation } from 'react-i18next';
 
 function Header() {
+  const { t } = useTranslation();
+
   return (
     <header>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div className="headerSwiperBox">
             <div className="upBox">
-
-              <h1>Lorem ipsum   <p>dolor</p> sit amet. </h1>
+              <h1>
+                {t("HeadText")}
+              </h1>
             </div>
             <div className="dowBox">
               <div className="headerCart">
-                <IoEarth className='icon' />
+                <IoPeopleSharp className='icon' />
                 <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
+                  <h1>{t("HeadTxt1")}
+                  </h1>
                 </div>
               </div>
               <div className="headerCart">
-                <GiBookshelf />
+                <RiBankLine />
                 <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
+                  <h1>{t("HeadTxt2")}</h1>
                 </div>
               </div>
               <div className="headerCart">
-                <GiPyromaniac />
+                <FaOilWell />
                 <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
+                  <h1>{t("HeadTxt3")}</h1>
                 </div>
               </div>
             </div>
 
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="headerSwiperBox">
-            <div className="upBox">
-              <h1>Lorem ipsum   <p>dolor</p> sit amet. </h1>
 
-            </div>
-            <div className="dowBox">
-              <div className="headerCart">
-                <IoEarth className='icon' />
-                <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
-                </div>
-              </div>
-              <div className="headerCart">
-                <GiBookshelf />
-                <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
-                </div>
-              </div>
-              <div className="headerCart">
-                <GiPyromaniac />
-                <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="headerSwiperBox">
-            <div className="upBox">
-              <h1>Lorem ipsum   <p>dolor</p> sit amet. </h1>
-
-            </div>
-            <div className="dowBox">
-              <div className="headerCart">
-                <IoEarth className='icon' />
-                <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
-                </div>
-              </div>
-              <div className="headerCart">
-                <GiBookshelf />
-                <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
-                </div>
-              </div>
-              <div className="headerCart">
-                <GiPyromaniac />
-                <div className="div">
-                  <h1>Lorem, ipsum.</h1>
-                  <button>VIEW MORE</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </SwiperSlide>
       </Swiper>
     </header>
   )

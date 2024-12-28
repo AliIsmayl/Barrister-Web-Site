@@ -62,37 +62,29 @@
 
     .downBox {
         display: flex;
-        flex-direction: column;
         gap: 50px;
+        justify-content: center;
+        flex-wrap: wrap;
 
         .cart {
-            @include Myflex();
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
             font-family: "Poppins-SemiBold";
-
-            .numberBox {
-                border: 2px solid #A97E4F;
-                font-size: 20px;
-                padding: 50px;
-                @include Myflex();
-                flex-direction: column;
-                color: #A97E4F;
-            }
+            flex-direction: column;
+            width: 600px;
+            border: 2px solid #A97E4F;
 
             .middleBox {
                 color: black;
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                padding: 10px 20px;
-                width: 60%;
+                padding: 10px;
 
                 h1 {
                     transition: 0.5s;
                     font-family: "Poppins-Medium";
-
                 }
 
                 h1:hover {
@@ -103,13 +95,12 @@
                 span {
                     margin-top: 20px;
                     color: gray;
-                    max-width: 80%;
                 }
             }
 
             .imageBox {
                 img {
-                    max-width: 300px;
+                    width: 300px;
                 }
             }
         }
@@ -129,7 +120,7 @@
 
 
             .cart {
-
+width: 300px;
 
                 .middleBox {
                     width: 100%;

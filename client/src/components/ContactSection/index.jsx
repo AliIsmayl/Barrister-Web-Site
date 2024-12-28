@@ -1,21 +1,19 @@
 import React from 'react'
 import './ContactSection.scss'
+import { useTranslation } from 'react-i18next';
 
 function ContactSection() {
+  const { t } = useTranslation();
+
   return (
     <section id='contactSection'>
-      {/* <div className="leftBox"> */}
-        {/* <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, praesentium?</h2> */}
-   {/* <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempo.</p> */}
-   {/* <button>REGISTER NOW</button> */}
-      {/* </div> */}
       <div className="rightBox">
-        <h2>Contact</h2>
+        <h2>{t("Contact")}</h2>
         <form action="">
-          <input type="text" placeholder='Name'/>
-          <input type="text" placeholder='Service'/>
-          <textarea type="text" placeholder='Message'/>
-          <button>Send Message</button>
+          <input type="text" placeholder={t("Name")} />
+          <input type="text" placeholder={t("Service")} />
+          <textarea type="text" placeholder={t("Message")} />
+          <button>{t("SendMessage")}</button>
         </form>
       </div>
     </section>
